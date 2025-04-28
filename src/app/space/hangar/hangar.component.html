@@ -1,3 +1,5 @@
-<p>hangar works!</p>
+<!-- <p>hangar works!</p> -->
 <h1>Hangar</h1>
-<app-space-ship></app-space-ship>
+@for (spaceShip of spaceShips; track spaceShip) {
+    <app-space-ship [spaceShip]="spaceShip"></app-space-ship>
+}
