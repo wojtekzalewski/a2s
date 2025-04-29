@@ -1,1 +1,4 @@
-<p>pilot-room works!</p>
+<h1>Pilot Room</h1>
+@for (pilot of pilots; track pilot) {
+  <app-pilot [pilot]="pilot"></app-pilot>
+}
