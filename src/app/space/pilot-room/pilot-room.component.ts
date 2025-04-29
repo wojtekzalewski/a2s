@@ -11,10 +11,16 @@ import { PilotComponent } from '../pilot/pilot.component';
 
 export class PilotRoomComponent implements OnInit {
   pilots: Pilot[] = [];
+
+  selectedPilot: Pilot | null = null;
   
-  ngOnInit(): void {
-    this.pilots.push(new Pilot('Sharon Valeri', '/assets/valaeri.png'));
+  ngOnInit() {
+    this.pilots.push(new Pilot('Sharon Valeri', '/assets/valerii.png'));
     this.pilots.push(new Pilot('Karl Agathon'));
   }
+
+  select(pilot: Pilot | null): void {
+    this.selectedPilot = pilot; 
+  } 
 
 }

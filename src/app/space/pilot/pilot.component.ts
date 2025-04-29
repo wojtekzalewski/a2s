@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Pilot } from '../pilot';
 
 @Component({
   selector: 'app-pilot',
@@ -7,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './pilot.component.css'
 })
 export class PilotComponent {
-@Input ({required: true}) pilot!: Pilot;
+  @Input ({required: true}) pilot!: Pilot;
 }

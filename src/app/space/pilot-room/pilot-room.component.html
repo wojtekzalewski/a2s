@@ -1,4 +1,10 @@
 <h1>Pilot Room</h1>
 @for (pilot of pilots; track pilot) {
-  <app-pilot [pilot]="pilot"></app-pilot>
+  <app-pilot [pilot]="pilot" [class.selected]="selectedPilot === pilot">
+    @if (selectedPilot !== pilot) {
+      <button class="select-button" (click)="select(pilot)">Zaznacz</button>
+    } @else {
+      <button class="deselect-button" (click)="select(null)">Odznacz</button>
+    }
+  </app-pilot>
 }
