@@ -10,6 +10,17 @@ img {
     max-width: 100%;
 }
 
+.images {
+    position: relative;
+}
+
+.images .pilot {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 30%;
+}
+
 .health {
     background-color: crimson;
     height: 10px;
@@ -30,3 +41,4 @@ img {
 .property.active {
     color: #fff;
 }
+

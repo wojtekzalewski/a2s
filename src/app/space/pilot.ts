@@ -1,26 +1,27 @@
 export class Pilot {
-    firstName: string;
-    lastName: string;
-    imageUrl: string;
-}
+  static defaultImageUrl = '/assets/unknown-pilot.png';
 
-get fullName(): string {
-    return `${this.firstName} ${this.lastName}`.trim();
-}
+  firstName: string;
+  lastName: string;
+  imageUrl: string;
 
-set fullName(value: string) {
-    const vlaues = value.split(' ');
-    this.firstName = values[0] || '';
-    this.lastName = values[1] || '';
-}
-
-static defaultImage = '/assets/unknown-pilot.png';
-
-constructor(fullName string = '', imageUrl: string = Pilot.defaultImageUrl) {
+  constructor(fullName: string = '', imageUrl: string = Pilot.defaultImageUrl) {
     this.firstName = '';
     this.lastName = '';
     this.imageUrl = imageUrl;
-    if(fullName){
-        this.fullName = fullName;
+
+    if (fullName) {
+      this.fullName = fullName;
     }
+  }
+
+  get fullName(): string {
+    return `${this.firstName} ${this.lastName}`.trim();
+  }
+
+  set fullName(value: string) {
+    const values = value.split(' ');
+    this.firstName = values[0] || '';
+    this.lastName = values[1] || '';
+  }
 }

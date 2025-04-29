@@ -1,6 +1,10 @@
-<p>space-ship works!</p>
+<!-- <p>space-ship works!</p> -->
 <h4>{{spaceShip.modelName}}</h4>
-<div class="images"><img [src]="spaceShip.imageUrl"/></div>
+<div class="images"><img [src]="spaceShip.imageUrl"/>
+@if (spaceShip.pilot) {
+  <img class = "pilot" [src]="spaceShip.pilot.imageUrl"/>
+}
+</div>
 <div class="health" [title]="'Health ' + spaceShip.health + '%'">
     <div [style.width.%]="spaceShip.health"></div>
   </div>
