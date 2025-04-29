@@ -1,5 +1,9 @@
-<!-- <p>hangar works!</p> -->
+<div class="hangar-section">
 <h1>Hangar</h1>
 @for (spaceShip of spaceShips; track spaceShip) {
     <app-space-ship [spaceShip]="spaceShip"></app-space-ship>
 }
+</div>
+<div class="hangar-section">
+    <app-pilot-room></app-pilot-room>
+</div>
