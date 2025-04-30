@@ -1,9 +1,15 @@
 <div class="hangar-section">
 <h1>Hangar</h1>
 @for (spaceShip of spaceShips; track spaceShip) {
-    <app-space-ship [spaceShip]="spaceShip"></app-space-ship>
+    <app-space-ship [spaceShip]="spaceShip">
+    @if (spaceShip.pilot) {
+        <button (click)="dismissPilot(spaceShip)">Opusc</button>
+    } @else if (selectedPilot) {
+        <button (click)="assignPilot(spaceShip)">Pilotuj</button>
+    } 
+    </app-space-ship>
 }
 </div>
 <div class="hangar-section">
-    <app-pilot-room></app-pilot-room>
+    <app-pilot-room (selected)="setSelectedPilot($event)"></app-pilot-room>
 </div>

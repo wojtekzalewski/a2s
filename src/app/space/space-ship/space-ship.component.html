@@ -1,4 +1,3 @@
-<!-- <p>space-ship works!</p> -->
 <h4>{{spaceShip.modelName}}</h4>
 <div class="images"><img [src]="spaceShip.imageUrl"/>
 @if (spaceShip.pilot) {
@@ -10,3 +9,6 @@
   </div>
   <div class="property" [class.active]="spaceShip.activeShields">SHIELDS</div>
   <div class="property" [class.active]="spaceShip.activeWeapons">WEAPONS</div>
+  <div class="actions">
+    <ng-content></ng-content>
+  </div>
