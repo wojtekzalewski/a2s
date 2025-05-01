@@ -11,15 +11,15 @@ import { EngineersRoomComponent } from '../engineers-room/engineers-room.compone
   templateUrl: './hangar.component.html',
   styleUrl: './hangar.component.css'
 })
-export class HangarComponent implements OnInit{
+export class HangarComponent {
   @ViewChild(PilotRoomComponent) pilotRoom!: PilotRoomComponent;
   spaceShips: SpaceShip[] = [];
   selectedPilot: Pilot | null = null;
 
-  ngOnInit() {
-    this.spaceShips.push(new FighterShip(new Pilot('Lee Adama', '/assets/adama.png')));
-    this.spaceShips.push(new BomberShip());
-  }
+  //ngOnInit() {
+    //this.spaceShips.push(new FighterShip(new Pilot('Lee Adama', '/assets/adama.png')));
+    //this.spaceShips.push(new BomberShip());
+  //}
 
   dismissPilot(spaceShip: SpaceShip) {
     if (!spaceShip.pilot) { return; }

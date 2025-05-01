@@ -27,6 +27,9 @@
   </div>
 
   <div class="control-group">
-    <button type="submit" [disabled]="form.invalid">Produkuj</button>
+    <button type="submit" [disabled]="form.invalid || isProducing">Produkuj</button>
+    @if (isProducing) {
+      <span class="info">Trwa produkcja...</span>
+    }
   </div>
 </form>

@@ -10,7 +10,7 @@ import { SpaceShipType } from './space-ship-type';
 export class SpaceShipService {
   static shipProductionTime = 2000;
 
-  produceShips({shipCount, shipType}): OrderFormValue): Obesrvable<spaceShip> {
+  produceShips({shipCount, shipType}: OrderFormValue): Observable<SpaceShip> {
     return interval(SpaceShipService.shipProductionTime).pipe(
       map(() => shipType === SpaceShipType.Fighter ? new FighterShip() : new BomberShip()),
       take(shipCount)
