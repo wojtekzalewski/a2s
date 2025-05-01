@@ -3,10 +3,11 @@ import { SpaceShipComponent } from '../space-ship/space-ship.component';
 import { FighterShip, BomberShip, SpaceShip } from '../space-ship';
 import { Pilot } from '../pilot';
 import { PilotRoomComponent } from "../pilot-room/pilot-room.component";
+import { EngineersRoomComponent } from '../engineers-room/engineers-room.component';
 
 @Component({
   selector: 'app-hangar',
-  imports: [SpaceShipComponent, PilotRoomComponent],
+  imports: [SpaceShipComponent, PilotRoomComponent, EngineersRoomComponent],
   templateUrl: './hangar.component.html',
   styleUrl: './hangar.component.css'
 })
