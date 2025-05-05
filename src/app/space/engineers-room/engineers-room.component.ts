@@ -4,6 +4,7 @@ import { SpaceShipType } from '../space-ship-type';
 import { OrderFormValue } from '../order-form-value';
 import { SpaceShip } from '../space-ship';
 import { SpaceShipService } from '../space-ship.service';
+import { AsyncPipe } from '@angular/common';
 
 
 interface SpaceShipTypeOption {
@@ -13,7 +14,7 @@ interface SpaceShipTypeOption {
 
 @Component({
   selector: 'app-engineers-room',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, AsyncPipe],
   templateUrl: './engineers-room.component.html',
   styleUrl: './engineers-room.component.css'
 })
@@ -21,7 +22,9 @@ export class EngineersRoomComponent {
   
   private spaceShipService = inject(SpaceShipService);
 
-  @Output()shipProduced = new EventEmitter<SpaceShip>();
+  shipsCount = this.spaceShipService.hangarShipsCount;
+
+  //@Output()shipProduced = new EventEmitter<SpaceShip>();
 
   spaceShipTypeOptions: SpaceShipTypeOption[] = [
     {label: "Mysliwiec", value: SpaceShipType.Fighter},
