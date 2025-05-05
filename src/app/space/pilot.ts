@@ -1,17 +1,28 @@
+export interface PilotAttrs {
+  id?: number;
+  firstName: string;
+  lastName: string;
+  imageUrl: string;
+  fullName?: string;
+}
+
 export class Pilot {
   static defaultImageUrl = '/assets/unknown-pilot.png';
+
+  id?: number;
 
   firstName: string;
   lastName: string;
   imageUrl: string;
 
-  constructor(fullName: string = '', imageUrl: string = Pilot.defaultImageUrl) {
-    this.firstName = '';
-    this.lastName = '';
-    this.imageUrl = imageUrl;
-
-    if (fullName) {
-      this.fullName = fullName;
+  constructor(attrs: Partial<PilotAttrs> = {}) {
+    this.id = attrs.id;
+    this.firstName = attrs.firstName || '';
+    this.lastName = attrs.lastName || '';
+    this.imageUrl = attrs.imageUrl || Pilot.defaultImageUrl;
+    
+    if (attrs.fullName) {
+      this.fullName = attrs.fullName;
     }
   }
 
