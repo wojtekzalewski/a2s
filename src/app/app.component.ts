@@ -5,7 +5,7 @@ import { HangarComponent } from "./space/hangar/hangar.component";
 
 @Component({
   selector: 'app-root',
-  imports: [A2sCommComponent, RouterOutlet, HangarComponent, HangarComponent],
+  imports: [A2sCommComponent, RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

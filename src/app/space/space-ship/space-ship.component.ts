@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { SpaceShip } from '../space-ship';
-import { ZoomImageDirective } from 'src/app/shared/zoom-image.directive';
-import { TickizePipe } from 'src/app/shared/tickize.pipe';
+import { ZoomImageDirective } from '../../shared/zoom-image.directive';
+import { TickizePipe } from '../../shared/tickize.pipe';
 
 @Component({
   selector: 'app-space-ship',

@@ -7,7 +7,7 @@ export class ZoomImageDirective {
   zoom = 1.0;
 
   @HostBinding('style.transform') get scale() {
-    return `scale (${this.zoom})`;
+    return `scale(${this.zoom})`;
   }
 
   @HostListener('mousemove') zoomIn() {
