@@ -1,6 +1,7 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, inject } from '@angular/core';
 import { Pilot } from '../pilot';
 import { PilotComponent } from '../pilot/pilot.component';
+import { PilotService } from '../pilot.service';
 
 @Component({
   selector: 'app-pilot-room',
@@ -10,16 +11,23 @@ import { PilotComponent } from '../pilot/pilot.component';
 })
 
 export class PilotRoomComponent implements OnInit {
+  private pilotService = inject(PilotService);
   @Output() selected = new EventEmitter<Pilot | null>();
   pilots: Pilot[] = [];
 
   selectedPilot: Pilot | null = null;
   
   ngOnInit() {
-    this.pilots.push(new Pilot('Sharon Valeri', '/assets/valerii.png'));
-    this.pilots.push(new Pilot('Lee Adama', '/assets/adama.png'));
-    this.pilots.push(new Pilot('Unknown Pilot', '/assets/unknown-pilot.png'));
+    //this.pilots.push(new Pilot('Sharon Valeri', '/assets/valerii.png'));
+    //this.pilots.push(new Pilot('Lee Adama', '/assets/adama.png'));
+    //this.pilots.push(new Pilot('Unknown Pilot', '/assets/unknown-pilot.png'));
     //this.pilots.push(new Pilot('WZ', '/assets/wz.jpg'));
+
+this.pilotService.getPilots().subscribe({
+  next: (pilots) => this.pilots = pilots,
+  error: () => alert('Nie udalo sie pobrac pilotow')
+});
+
   }
 
   addPilot(pilot: Pilot) {
