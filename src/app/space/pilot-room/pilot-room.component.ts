@@ -18,7 +18,7 @@ export class PilotRoomComponent implements OnInit {
   ngOnInit() {
     this.pilots.push(new Pilot('Sharon Valeri', '/assets/valerii.png'));
     this.pilots.push(new Pilot('Karl Agathon'));
-    this.pilots.push(new Pilot('WZ', '/assets/wz.jpg'));
+    //this.pilots.push(new Pilot('WZ', '/assets/wz.jpg'));
   }
 
   addPilot(pilot: Pilot) {

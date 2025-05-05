@@ -1,31 +1,23 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, inject, ViewChild } from '@angular/core';
 import { SpaceShipComponent } from '../space-ship/space-ship.component';
-import { FighterShip, BomberShip, SpaceShip } from '../space-ship';
+import { SpaceShip } from '../space-ship';
 import { Pilot } from '../pilot';
-import { PilotRoomComponent } from "../pilot-room/pilot-room.component";
+import { PilotRoomComponent } from '../pilot-room/pilot-room.component';
 import { EngineersRoomComponent } from '../engineers-room/engineers-room.component';
+import { SpaceShipService } from '../space-ship.service';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-hangar',
-  imports: [SpaceShipComponent, PilotRoomComponent, EngineersRoomComponent],
+  imports: [SpaceShipComponent, PilotRoomComponent, EngineersRoomComponent, AsyncPipe],
   templateUrl: './hangar.component.html',
-  styleUrl: './hangar.component.css'
+  styleUrl: './hangar.component.css',
 })
 export class HangarComponent {
+  private spaceShipService = inject(SpaceShipService);
   @ViewChild(PilotRoomComponent) pilotRoom!: PilotRoomComponent;
-  spaceShips: SpaceShip[] = [];
+  spaceShips = this.spaceShipService.hangarShips;
   selectedPilot: Pilot | null = null;
-
-  //ngOnInit() {
-    //this.spaceShips.push(new FighterShip(new Pilot('Lee Adama', '/assets/adama.png')));
-    //this.spaceShips.push(new BomberShip());
-  //}
-
-  dismissPilot(spaceShip: SpaceShip) {
-    if (!spaceShip.pilot) { return; }
-    this.pilotRoom.addPilot(spaceShip.pilot);
-    delete spaceShip.pilot;
-  }
 
   assignPilot(spaceShip: SpaceShip): void {
     if (!this.selectedPilot) { return; }
@@ -33,7 +25,13 @@ export class HangarComponent {
     this.pilotRoom.removePilot(this.selectedPilot);
   }
 
-  setSelectedPilot(pilot: Pilot | null){
-    this.selectedPilot = pilot; 
+  dismissPilot(spaceShip: SpaceShip): void {
+    if (!spaceShip.pilot) { return; }
+    this.pilotRoom.addPilot(spaceShip.pilot);
+    delete spaceShip.pilot;
+  }
+
+  setSelectedPilot(pilot: Pilot | null) {
+    this.selectedPilot = pilot;
   }
 }
