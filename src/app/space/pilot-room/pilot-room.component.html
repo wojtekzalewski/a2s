@@ -1,6 +1,15 @@
-<h1>Pilot Room</h1>
+<h1>
+  Pilot Room
+  <button class="add-button" [routerLink]="['pilots', 'new']">
+    Dodaj
+  </button>
+</h1>
+
 @for (pilot of pilots; track pilot) {
   <app-pilot [pilot]="pilot" [class.selected]="selectedPilot === pilot">
+    <button class="edit-button" [routerLink]="['pilots', pilot.id]">
+      Edytuj
+    </button>
     @if (selectedPilot !== pilot) {
       <button class="select-button" (click)="select(pilot)">Zaznacz</button>
     } @else {
@@ -8,3 +17,4 @@
     }
   </app-pilot>
 }
+  

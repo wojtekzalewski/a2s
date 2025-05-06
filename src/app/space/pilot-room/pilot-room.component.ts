@@ -1,37 +1,31 @@
-import { Component, EventEmitter, OnInit, Output, inject } from '@angular/core';
+import { Component, EventEmitter, inject, OnInit, Output } from '@angular/core';
 import { Pilot } from '../pilot';
 import { PilotComponent } from '../pilot/pilot.component';
 import { PilotService } from '../pilot.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-pilot-room',
-  imports: [PilotComponent],
+  imports: [PilotComponent, RouterLink],
   templateUrl: './pilot-room.component.html',
-  styleUrl: './pilot-room.component.css',
+  styleUrls: ['./pilot-room.component.css']
 })
-
 export class PilotRoomComponent implements OnInit {
   private pilotService = inject(PilotService);
   @Output() selected = new EventEmitter<Pilot | null>();
   pilots: Pilot[] = [];
-
   selectedPilot: Pilot | null = null;
-  
+
   ngOnInit() {
-    //this.pilots.push(new Pilot('Sharon Valeri', '/assets/valerii.png'));
-    //this.pilots.push(new Pilot('Lee Adama', '/assets/adama.png'));
-    //this.pilots.push(new Pilot('Unknown Pilot', '/assets/unknown-pilot.png'));
-    //this.pilots.push(new Pilot('WZ', '/assets/wz.jpg'));
-
-this.pilotService.getPilots().subscribe({
-  next: (pilots) => this.pilots = pilots,
-  error: () => alert('Nie udalo sie pobrac pilotow')
-});
-
+    this.pilotService.getPilots().subscribe({
+      next: (pilots) => this.pilots = pilots,
+      error: () => alert('Nie udało się pobrać pilotów')
+    });
   }
 
-  addPilot(pilot: Pilot) {
-    this.pilots.push(pilot);
+  select(pilot: Pilot | null): void {
+    this.selectedPilot = pilot;
+    this.selected.emit(pilot);
   }
 
   removePilot(pilot: Pilot): void {
@@ -40,9 +34,8 @@ this.pilotService.getPilots().subscribe({
     this.select(null);
   }
 
-  select(pilot: Pilot | null): void {
-    this.selectedPilot = pilot; 
-    this.selected.emit(pilot);
-  } 
+  addPilot(pilot: Pilot): void {
+    this.pilots.push(pilot);
+  }
 
 }
