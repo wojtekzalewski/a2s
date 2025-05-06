@@ -1,7 +1,8 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { map } from 'rxjs';
+import { PilotService } from '../pilot.service';
 
 @Component({
   selector: 'app-pilot-form',
@@ -10,8 +11,10 @@ import { map } from 'rxjs';
   styleUrl: './pilot-form.component.css',
 })
 export class PilotFormComponent implements OnInit {
+  private router = inject(Router);
+  private pilotService = inject(PilotService);
   private route = inject(ActivatedRoute);
-
+  
   form = new FormGroup({
     id: new FormControl(undefined, { nonNullable: true }),
     firstName: new FormControl('', { nonNullable: true }),
@@ -23,5 +26,14 @@ export class PilotFormComponent implements OnInit {
     this.route.data
       .pipe(map((data) => data['pilot']))
       .subscribe((pilot) => this.form.patchValue(pilot));
-  }   
+  }  
+  
+  save(): void {
+    const pilotAttrs = this.form.getRawValue();
+    this.pilotService.savePilot(pilotAttrs).subscribe({
+      next: () => this.router.navigate(['../..'], {relativeTo: this.route}),
+      error: () => alert('Nie udało się zapisać pilota!')
+    });
+}
+
 }
