@@ -4,3 +4,7 @@ body {
     color: #fff;
     font-family: Helvetica, sans-serif;
 }
+
+button[type="submit"], .select-button, input[type="number"], .select-ship {
+    cursor: pointer;
+}
