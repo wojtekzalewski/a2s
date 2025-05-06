@@ -17,5 +17,11 @@ export class PilotService {
     );
   }
 
+  getPilot(id: number) {
+    return this.http.get<PilotAttrs>(`$(environment.apiUrl}/pilots/${id}`).pipe(
+      map((pilotAttrs) => new Pilot(pilotAttrs))
+    );
+  }
+
   constructor() { }
 }
