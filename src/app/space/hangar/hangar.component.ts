@@ -6,10 +6,11 @@ import { PilotRoomComponent } from '../pilot-room/pilot-room.component';
 import { EngineersRoomComponent } from '../engineers-room/engineers-room.component';
 import { SpaceShipService } from '../space-ship.service';
 import { AsyncPipe } from '@angular/common';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-hangar',
-  imports: [SpaceShipComponent, PilotRoomComponent, EngineersRoomComponent, AsyncPipe],
+  imports: [SpaceShipComponent, PilotRoomComponent, AsyncPipe, RouterOutlet, RouterLink, RouterLinkActive],
   templateUrl: './hangar.component.html',
   styleUrl: './hangar.component.css',
 })
