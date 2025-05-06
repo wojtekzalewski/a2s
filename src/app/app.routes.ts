@@ -22,6 +22,10 @@ export const routes: Routes = [
     resolve: {pilot: pilotResolver}
 },
 {
+    path: 'intel',
+    loadComponent: () => import('./intel-browser/intel-browser.component').then(m => m.IntelBrowserComponent)
+},
+{
     path: '',
     redirectTo: 'space',
     pathMatch: 'full'
