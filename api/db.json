@@ -2,8 +2,8 @@
   "pilots": [
     {
       "id": 1,
-      "firstName": "Leess",
-      "lastName": "Adamas",
+      "firstName": "Leesssss",
+      "lastName": "Adamass",
       "imageUrl": "/assets/adama.png"
     },
     {
@@ -17,6 +17,12 @@
       "firstName": "Karl",
       "lastName": "Agathon",
       "imageUrl": null
+    },
+    {
+      "firstName": "Ass",
+      "lastName": "Ciamajda2",
+      "imageUrl": "/assets/unknown-pilot.png",
+      "id": 4
     }
   ],
   "forbidden-names": [

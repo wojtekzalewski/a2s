@@ -4,11 +4,17 @@
   <div class="control-group">
     <label class="control-label">Imię:</label>
     <input type="text" [formControl]="form.controls.firstName">
+    @if (form.controls.firstName.hasError('titleCase')) {
+      <span class="error">zacznij wielka litera</span>
+    }
   </div>
 
   <div class="control-group">
     <label class="control-label">Nazwisko:</label>
     <input type="text" [formControl]="form.controls.lastName">
+    @if (form.controls.lastName.hasError('forbiddenName')){
+      <span class="error">zakazane nazwisko</span>
+    }
   </div>
 
   <div class="control-group">
