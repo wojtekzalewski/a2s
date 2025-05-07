@@ -23,6 +23,12 @@
       "lastName": "Ciamajda2",
       "imageUrl": "/assets/unknown-pilot.png",
       "id": 4
+    },
+    {
+      "firstName": "",
+      "lastName": "",
+      "imageUrl": "/assets/unknown-pilot.png",
+      "id": 5
     }
   ],
   "forbidden-names": [

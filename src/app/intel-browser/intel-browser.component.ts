@@ -1,4 +1,4 @@
-import { Component, inject, signal, computed } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { toSignal } from '@angular/core/rxjs-interop';
@@ -7,17 +7,20 @@ import { toSignal } from '@angular/core/rxjs-interop';
   selector: 'app-intel-browser',
   imports: [ReactiveFormsModule],
   templateUrl: './intel-browser.component.html',
-  styleUrl: './intel-browser.component.css'
+  styleUrls: ['./intel-browser.component.css']
 })
 export class IntelBrowserComponent {
   private sanitizer = inject(DomSanitizer);
+
   urlControl = new FormControl('', {nonNullable: true});
+
   urls = signal([
     'https://polsa.gov.pl',
     'https://spacex.com',
     'https://esa.int',
     'https://tvp.info'
   ]);
+
   currentUrl = toSignal(this.urlControl.valueChanges, {initialValue: this.urlControl.value});
 
   trustedCurrentUrl = computed(() =>
@@ -29,6 +32,7 @@ export class IntelBrowserComponent {
     if (!newUrl) {
       return;
     }
+
     this.urls.update(urls => [newUrl, ...urls]);
     this.urlControl.setValue(newUrl);
   }
@@ -42,5 +46,4 @@ export class IntelBrowserComponent {
     });
     this.urlControl.setValue('');
   }
-  
 }
